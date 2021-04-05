@@ -13,11 +13,11 @@ public class SortBaseArrayService {
     private final static String ARRAY_SORT_STARTS    = "selection sort array starts...";
     private final static String ARRAY_SORT_FINISH    = "selection sort array finished";
 
-    static final org.apache.logging.log4j.Logger Logger = LogManager.getLogger(SearchBaseArrayService.class);
+    static final org.apache.logging.log4j.Logger Logger = LogManager.getLogger(SortBaseArrayService.class);
 
-    public BaseArray sortByBubble(BaseArray array) {
+    public BaseArray sortByBubble(BaseArray array) throws BaseArrayException {
         if (array.isEmpty()) {
-            throw new BaseArrayException(ERR_ARRAY_IS_NULL);
+            throw new IllegalArgumentException(ERR_ARRAY_IS_NULL);
         }
         Logger.log(Level.DEBUG, ARRAY_BUBBLE_STARTS);
 
@@ -34,9 +34,9 @@ public class SortBaseArrayService {
         return array;
     }
 
-    public BaseArray sortBySelection(BaseArray array) {
+    public BaseArray sortBySelection(BaseArray array) throws BaseArrayException {
         if (array.isEmpty()) {
-            throw new BaseArrayException(ERR_ARRAY_IS_NULL);
+            throw new IllegalArgumentException(ERR_ARRAY_IS_NULL);
         }
         Logger.log(Level.DEBUG, ARRAY_SORT_STARTS);
 

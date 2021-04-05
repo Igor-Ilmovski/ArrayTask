@@ -14,10 +14,10 @@ public class BaseArrayStringParser {
 
     public int[] parseStringAsInt(String stringAsIntegers, String separator) throws BaseArrayException {
         if (separator.isEmpty()) {
-            throw new BaseArrayException(SEPARATOR_IS_EMPTY);
+            throw new IllegalArgumentException(SEPARATOR_IS_EMPTY);
         }
         if (stringAsIntegers.isEmpty()) {
-            throw new BaseArrayException(STRING_IS_EMPTY);
+            throw new IllegalArgumentException(STRING_IS_EMPTY);
         }
 
         String[] strArray = stringAsIntegers.split(separator);
@@ -31,6 +31,7 @@ public class BaseArrayStringParser {
             Logger.log(Level.ERROR, errorMessage);
             throw new BaseArrayException(errorMessage);
         }
+        return values;
     }
 
 }

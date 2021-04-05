@@ -11,7 +11,6 @@ public class BaseArrayException extends Exception {
     }
 
     public BaseArrayException(String messageString, Throwable cause) {
-
         super(messageString, cause);
     }
 }
