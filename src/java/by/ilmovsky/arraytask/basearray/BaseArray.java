@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class BaseArray {
 
     private final static String INVALID_ARRAY_LENGTH    = "Invalid array length";
-    private final static String ERR_ARRAY_IS_NULL       = "Array value  is null";
+    private final static String ERR_ARRAY_IS_NULL       = "Array is empty";
     private final static String INVALID_ITEM_VALUE      = "Invalid array item value: %d";
     private final static String INVALID_ARRAY_INDEX     = "invalid array index";
 
@@ -24,7 +24,6 @@ public class BaseArray {
 
     public BaseArray(int arrayLength) {
         if (arrayLength >= 0) {
-            //int[] array = new int[arrayLength];
             setBaseArray(new int[arrayLength]);
             Logger.log(Level.DEBUG, "BaseArray object created");
         } else {
@@ -32,6 +31,10 @@ public class BaseArray {
             Logger.log(Level.ERROR, errorMessage);
             throw new BaseArrayException(errorMessage);
         }
+    }
+
+    public boolean isEmpty() {
+        return (array == null) || (array.length == 0);
     }
 
     public int getBaseArrayLength() {
@@ -62,7 +65,7 @@ public class BaseArray {
     }
 
     public int getItem( int index) {
-        if (array == null) {
+        if (this.isEmpty()) {
             throw new  IllegalArgumentException("getItem: " + ERR_ARRAY_IS_NULL);
         }
         if (index < 0 || index >= array.length) {
@@ -82,7 +85,7 @@ public class BaseArray {
     }
 
     public void setItem( int index, int newValue) throws BaseArrayException {
-        if (array == null) {
+        if (this.isEmpty()) {
             throw new BaseArrayException("setItem: " + ERR_ARRAY_IS_NULL);
         }
         if (index < 0 || index >= array.length) {
@@ -90,7 +93,6 @@ public class BaseArray {
             Logger.log(Level.ERROR, errorMessage);
             throw new ArrayIndexOutOfBoundsException(errorMessage);
         }
-
         try {
              array[index] = newValue;
             }
