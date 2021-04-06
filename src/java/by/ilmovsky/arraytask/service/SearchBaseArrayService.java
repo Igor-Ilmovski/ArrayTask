@@ -1,6 +1,7 @@
 package by.ilmovsky.arraytask.service;
 
 import by.ilmovsky.arraytask.basearray.BaseArray;
+import by.ilmovsky.arraytask.creator.BaseArrayCreator;
 import by.ilmovsky.arraytask.exception.BaseArrayException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -88,11 +89,11 @@ public class SearchBaseArrayService {
         return replacedCounter;
     }
 
-    public double getBaseArraySum(BaseArray array) throws BaseArrayException {
+    public int getBaseArraySum(BaseArray array) throws BaseArrayException {
         if (array.isEmpty()) {
             throw new IllegalArgumentException(ERR_ARRAY_IS_NULL + array.getClass());
         }
-        double summ = 0;
+        int summ = 0;
         int arrLength = array.getBaseArrayLength();
         for (int i = 0; i < arrLength; i++) {
             summ = summ + array.getItem(i);
@@ -105,7 +106,7 @@ public class SearchBaseArrayService {
         if (array.isEmpty()) {
             throw new IllegalArgumentException(ERR_ARRAY_IS_NULL + array.getClass());
         }
-        double average = 0;
+        double average = 0.0;
         int arrLength = array.getBaseArrayLength();
         if (arrLength > 0) {
             average = getBaseArraySum(array) / array.getBaseArrayLength();

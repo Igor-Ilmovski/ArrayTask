@@ -17,6 +17,7 @@ public class BaseArrayFileReader {
     private final static String FILE_LOADING_FAILED = "Failed to load file '%s'";
     private final static String FILENAME_IS_EMPTY   = "File name mustn't be empty";
     private final static String FILE_NOT_FOUND      = "file '%s' not found";
+    private final static String FILE_LOADED_LINES   = "file's loaded lines";
 
     static final org.apache.logging.log4j.Logger Logger = LogManager.getLogger();
 
@@ -40,6 +41,7 @@ public class BaseArrayFileReader {
         } catch (IOException e) {
             Logger.log(Level.ERROR, String.format(FILE_LOADING_FAILED, fileName));
         }
+        Logger.log(Level.DEBUG, String.format("%s: %d", FILE_LOADED_LINES, listOfFileStrings.size()));
         return listOfFileStrings;
     }
 }
